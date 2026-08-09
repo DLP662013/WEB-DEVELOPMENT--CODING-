@@ -1,0 +1,52 @@
+body {
+  background-color: darkblue;
+  background-image: linear-gradient(to bottom, rgb(123, 231, 220), navy);
+  background-repeat: no-repeat;
+  background-position: top center;
+  font-family: Arial, sans-serif;
+  background-image: url("https: //media.istockphoto.com/id/1035676256/photo/background-of-galaxy-and-stars.jpg?s=612x612&w=0&k=20&c=dh7eWJ6ovqnQZ9QwQQlq2wxqmAR7mgRlQTgaIylgBwc=");
+}
+
+.page-header {
+  background-image: linear-gradient(to right, purple, coral);
+  border-radius: 16px;
+  text-align: center;
+  color: white;
+}
+
+.fact-card {
+  background-color: midnightblue;
+  border-radius: 16px;
+  color: whitesmoke;
+}
+
+.fact-card h2 {
+  color: coral;
+}
+
+.star {
+  width: 60px;
+  height: 60px;
+  background-color: yellow;
+  border-radius: 50%;
+  animation: twinkle 5s infinite alternate;
+}
+
+@keyframes twinkle {
+  /* from {background-color: yellow;} */
+  /* to {background-color: white;} */
+  0% {
+    background: aqua;
+  }
+  50% {
+    background: brown;
+  }
+  100% {
+    background: cornflowerblue;
+  }
+}
+
+.footer-text {
+  text-align: center;
+  color: coral;
+}
