@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculater</title>
+
+<style>
+    body {
+        background-color: #102018;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    h1 {
+        font-style: sans-serif;
+        font-weight: normal;
+        color: #ffcc33;
+
+    }
+    h3 {
+        color: #ffcc33;
+        font-style: italic;
+    }
+    p {
+        color: white;
+    }
+    hr {
+        border-color: #2f4f3f;
+    }
+</style>
+
+</head>
+<body>
+
+<h1><u>-🧮SIMPLE - CALCULATER🧮-</u></h1>
+<h3>-add, subtract, multiply, divide-</h3>
+
+<p>Give your numbers are</p>
+<h3>First Number</h3>
+<input type="number" id="num1" placeholder="0">
+<h3>Second Number</h3>
+<input type="number" id="num2" placeholder="0">
+
+<hr>
+<h3>Addition</h3>
+<button style=background-color:chocolate type="button" onclick="add()">Click Me to add</button>
+<p id="a"></p>
+
+<hr>
+<h3>Subtraction</h3>
+<button style=background-color:orange type="button" onclick="subtract()">Click Me to subtractact</button>
+<p id="s"></p>
+
+<hr>
+<h3>Multiplication</h3>
+<button style=background-color:coral type="button" onclick="multiply()">Click Me to multiply</button>
+<p id="m"></p>
+
+<hr>
+<h3>Division</h3>
+<button style=background-color:rgb(142,65,36) type="button" onclick="divide()">Click Me to divide</button>
+<p id="d"></p>
+
+<script>
+    
+   var x = 0;
+   var y = 0;
+   var z = 0;
+
+    function add() {
+        var x = Number(document.getElementById("num1").value);
+        var y = Number(document.getElementById("num2").value);
+        var z = ( x + y )
+        document.getElementById("a").innerHTML= "If we add those numbers we get "+z;
+    }
+
+    function subtract() {
+        var x = Number(document.getElementById("num1").value);
+        var y = Number(document.getElementById("num2").value);
+        var z = ( x - y )
+        document.getElementById("s").innerHTML= "If we subtract those numbers we get "+z;
+    }
+
+    function multiply() {
+        var x = Number(document.getElementById("num1").value);
+        var y = Number(document.getElementById("num2").value);
+        var z = ( x * y )
+        document.getElementById("m").innerHTML= "If we multiply those numbers we get "+z;
+    }
+
+    function divide() {
+        var x = Number(document.getElementById("num1").value);
+        var y = Number(document.getElementById("num2").value);
+        var z = ( x / y )
+        document.getElementById("d").innerHTML= "If we divide those numbers we get "+z;
+    }
+
+</script>
+
+<hr>
+
+<p>- Thank You -</p>
+
+</body>
+</html>
+
