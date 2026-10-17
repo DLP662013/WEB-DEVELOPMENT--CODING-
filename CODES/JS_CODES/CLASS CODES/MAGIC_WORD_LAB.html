@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magic Word Lab</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      body {
+        background: lightyellow;
+      }
+      h1,
+      h3 {
+        color: darkorange;
+      }
+      .box {
+        background: white;
+        color: darkorange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-4">
+      <h1 class="mb-4">My Magic Word Lab</h1>
+      <p class="text-muted mb-4">
+        Discover types, switch them, find and swap words.
+      </p>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="card-title">What card type of is it?</div>
+          <button class="btn btn-warning" onclick="checkTypes()">
+            Reveal the Types
+          </button>
+          <div id="typeResult" class="box p-3 mt-3 rounded">
+            Press the button to reveal it's secret types
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h3 class="card-tile">Switch the The types</h3>
+          <input
+            id="numIn"
+            class="form control mb-2"
+            placeholder="Type any numer here (Try 42)"
+          />
+          <button class="btn btn-warning mr-2" onclick="toStr()">
+            Turn into text
+          </button>
+          <button class="btn btn-warning mr-2" onclick="toNum()">
+            Turn into number
+          </button>
+          <div id="convResult" class="box p-3 mt-3 rounded">
+            Type a number above then press a button.
+          </div>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-body">
+            <h3 class="card-title">Find and Swap a word</h3>
+            <input id="findW" class="form-control mb-2" placeholder="Word to Find (try Dragon)">
+            <input id="swapW" class="form-control mb-2" placeholder="Swap it with (try Dragon-Fly)">
+            <button class="btn btn-warning mr-2" onclick="doSearch()">Find it!!!</button>
+            <button class="btn btn-warning" onclick="doReplace()">Swap it!!!</button>
+            <div id="srResult" class="box p-3 mt-3 rounded">Sentence : The Dragon Flew over the Castle.</div>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-body">
+            <h3 class="card-title">Catch the Mistake!!!</h3>
+            <input id="divIn" class="form-control mb-2" placeholder="Divide 100 by this">
+            <button class="btn btn-warning" onclick="trySafe()"></button>
+    </div>
+  </body>
+</html>
