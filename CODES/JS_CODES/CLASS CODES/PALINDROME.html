@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome</title>
+</head>
+<body>
+    <h2>Palindrome</h2>
+
+<script>
+    function Palindrome(myString) {
+        var input = myString.replace(/[^A-Z0-9]/gi, "").toLowerCase();
+        var reversedinput = input.split("").reverse().join("");
+
+        if (input === reversedinput) {
+            document.write( "<div>" + (myString) + " is a palindrome" + "</div>");
+        } else {
+            document.write( "<div>" + (myString) + " is not a palindrome" + "</div>");
+        }
+    }
+    Palindrome("SIR");
+</script>
+
+</body>
+</html>
