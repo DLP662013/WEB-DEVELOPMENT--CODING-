@@ -1,39 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finding Area of Different Figures</title>
-</head>
-<body>best
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Finding Area of Different Shapes</title>
+  </head>
+  <body>
+    best
     <script>
-        var choice = prompt ("Welcome to Area Calculater . \n Please Enter your Choice (in numbers) \n 1.Area of a Rectangle \n 2.Area of a Triangle \n 3.Area of a square \n 4.Area of a cirlce")
+      var choice = prompt(
+        "Welcome to Area Calculater . \n Please Enter your Choice (in numbers) \n 1.Area of a Rectangle \n 2.Area of a Triangle \n 3.Area of a square \n 4.Area of a cirlce",
+      );
 
-        if (choice == "1") {
-            var l = prompt("Enter your Rectangle's length(in numbers)");
-            var b = prompt("Enter your Rectangle's breadth(in numbers)");
-            var result = Number(l) * Number(b);
-            alert("The Area of your Rectangle is," + result)
-        }
+      if (choice == "1") {
+        var l = prompt("Enter your Rectangle's length(in numbers)");
+        var b = prompt("Enter your Rectangle's breadth(in numbers)");
+        var result = Number(l) * Number(b);
+        alert("The Area of your Rectangle is," + result);
+      }
 
-        if (choice == "2") {
-            var h = prompt("Enter your Triangle's height(in numbers)");
-            var b = prompt("Enter your Triangle's base length(in numbers)");
-            var result = (Number(b) * Number(h)) / 2;
-            alert("The Area of your Traingle is," + result)
-        }
+      if (choice == "2") {
+        var h = prompt("Enter your Triangle's height(in numbers)");
+        var b = prompt("Enter your Triangle's base length(in numbers)");
+        var result = (Number(b) * Number(h)) / 2;
+        alert("The Area of your Traingle is," + result);
+      }
 
-        if (choice == "3") {
-            var l = prompt("Enter your Square's one side's length(in numbers)");
-            var result = Number(l) * Number(l);
-            alert("The Area of your Square is," + result)
-        }
+      if (choice == "3") {
+        var l = prompt("Enter your Square's one side's length(in numbers)");
+        var result = Number(l) * Number(l);
+        alert("The Area of your Square is," + result);
+      }
 
-        if (choice == "4") {
-            var r = prompt("Enter your Circle's radius(in numbers)");
-            var result = 3.14 * Number(r) * Number(r);
-            alert("The Area of your Circle is," + result)
-        }
+      if (choice == "4") {
+        var r = prompt("Enter your Circle's radius(in numbers)");
+        var result = 3.14 * Number(r) * Number(r);
+        alert("The Area of your Circle is," + result);
+      }
     </script>
-</body>
+  </body>
 </html>

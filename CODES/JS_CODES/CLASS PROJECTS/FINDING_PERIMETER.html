@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding Perimeter of Different Shapes</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        body {
+            background: scroll;
+            background-color: lightyellow;
+        }
+        .details {
+            background-color: aquamarine;
+        }
+    </style>
+
+</head>
+<body> 
+ <nav id="MathNav" class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+        <span class="navbar-brand">Measuring Space</span>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a href="#Perimeter" class="nav-link">Perimeter</a></li>
+            <li class="nav-item"><a href="#Area" class="nav-link">Area</a></li>
+            <li class="nav-item"><a href="#Your-Details" class="nav-link">Your-Details</a></li>
+        </ul>
+    </nav>
+
+<div class="bg-danger text-white p-3 my-3 border border-dark" id="Perimeter" style="height: 400px;">
+    <hr>
+      <h2>Perimeter</h2>
+      <hr>
+      <p>
+        Perimeter is the total-length of boundary of a 2D shape. Choose the shape you want to find the Perimeter.
+      </p>
+      
+      <button onclick="pRectangle()" class="btn btn-success">Rectangle</button><br><br>
+      <button onclick="pSquare()" class="btn btn-primary">Square</button><br><br>
+      <button onclick="pTriangle()" class="btn btn-info">Triangle</button><br><br>
+      <button onclick="pCircle()" class="btn btn-warning">Circle</button><br><br>
+
+      <hr>
+    </div>
+    
+    <div class="bg-success text-white p-3 my-3 border border-dark" id="Area"  style="height: 400px;">
+        <hr>
+      <h2>Area</h2>
+      <hr>
+      <p>
+        Area is the total space occupied by the 2D shape on a plane surface. Choose the shape you want to find the Area.
+      </p>
+      
+      <button onclick="aRectangle()" class="btn btn-info">Rectangle</button><br><br>
+      <button onclick="aSquare()" class="btn btn-danger">Square</button><br><br>
+      <button onclick="aTriangle()" class="btn btn-warning">Triangle</button><br><br>
+      <button onclick="aCircle()" class="btn btn-primary">Circle</button><br><br>
+
+      <hr>
+    </div>
+    
+   <div class="bg-warning text-white p-3 my-3 border border-dark" id="Your-Details"  style="height: 400px;">
+    <hr>
+   <h2>User-Details</h2>
+   <hr>
+   <p>Your-Details will be visible here</p>
+   
+   <p id="name"></p><br>
+   <p id="age"></p><br>
+   <p id="country"></p><br>
+   <button onclick="changingDetails()" class="btn btn-danger">Change My Details</button>
+   <hr>
+   </div>
+   
+   <script>
+
+    var Name = prompt("Welcome to Measuring Space, here you can find Perimeter, Area, and even Volume of your Favourite Shape. \n \n To move Forward please enter your name");
+    document.getElementById("name").innerText = "Name: "+ Name;
+
+    var Age = prompt("To move Forward please enter your age");
+    document.getElementById("age").innerText = "Age: " + Age;
+
+    var Country = prompt("To move Forward please enter your Country");
+    document.getElementById("country").innerText = "Country: "+ Country;
+
+
+
+    function changingDetails() {
+      var Name = prompt("If you want to change your name, you can change it here. Or else type the old name.");
+    document.getElementById("name").innerText = "Name: "+ Name;
+
+    var Age = prompt("If you want to change your age, you can change it here. Or else type the last saved age .");
+    document.getElementById("age").innerText = "Age: " + Age;
+
+    var Country = prompt("If you want to change your name, you can change it here. Or else type the old saved country.");
+    document.getElementById("country").innerText = "Country: "+ Country;  
+    }
+
+
+
+    function pRectangle() {
+        var length = prompt("Enter your Rectangle's length (in numbers)");
+        var breadth = prompt("Enter your Rectangle's breadth (in numbers)");
+        var result = 2 * (Number(length) + Number(breadth));
+        alert("Your Rectangle's perimeter is, " + result);
+    }
+    function pSquare() {
+        var length = prompt("Enter your Square's one side's length (in numbers)");
+        var result = 4 * Number(length);
+        alert("Your Square's perimeter is, " + result);
+    }
+    function pTriangle() {
+        var length1 = prompt("Enter your Triangle's first side's length (in numbers)");
+        var length2 = prompt("Enter your Triangle's second side's length (in numbers)");
+        var length3 = prompt("Enter your Triangle's third side's length (in numbers)");
+        var result = Number(length1) + Number(length2) + Number(length3);
+        alert("Your Triangle's perimeter is, " + result);
+    }
+    function pCircle() {
+        var radius = prompt("Enter your Circle's radius (in numbers)");
+        var result = 3.14 * (2 * Number(radius));
+        alert("Your Circle's perimeter is, " + result);
+    }
+
+
+
+    function aRectangle() {
+        var length = prompt("Enter your Rectangle's length (in numbers)");
+        var breadth = prompt("Enter your Rectangle's breadth (in numbers)");
+        var result = Number(length) * Number(breadth);
+        alert("Your Rectangle's area is, " + result);
+    }
+    function aSquare() {
+        var length = prompt("Enter your Square's one side's length (in numbers)");
+        var result = Number(length) * Number(length);
+        alert("Your Square's area is, " + result);
+    }
+    function aTriangle() {
+        var base = prompt("Enter your Triangle's base (in numbers)");
+        var height = prompt("Enter your Triangle's height (in numbers)");
+        var result = Number(base) * Number(height);
+        alert("Your Triangle's area is, " + result);
+    }
+    function aCircle() {
+        var radius = prompt("Enter your Circle's radius (in numbers)");
+        var result = 3.14 * (Number(radius) * Number(radius));
+        alert("Your Circle's area is, " + result);
+    }
+   </script>
+  
+   
+   
+   
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+</html>
