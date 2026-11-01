@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colour Changing App</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+<style>
+    body {
+        background-color: lightyellow;
+    }
+</style>
+
+</head>
+<body>
+    
+    <div class="container-fluid bg-success text-white p-4">
+    <h1>Colour-O-Colour</h1>
+    <p>Here You can change colours according to your Desire.</p>
+    </div>
+
+    <div class="container">
+
+        <div class="bg-warning text-white p-3 my-3 border border-dark">
+            <h2>Random Colours</h2>
+            <p>
+                Just click the below button and the button colour will change automatically.
+            </p>
+            <button  id="Button1" onclick="changeColour()">Change this Button Colour</button>
+            <button onclick="ChangeColour()">Change the background Colour</button>
+        </div>
+
+        <div class="bg-info text-white p-3 my-3 border border-dark">
+            <h2>Colour of my Own</h2>
+            <p>
+                Just click the below button and type the rgb numbers of your colour.
+            </p>
+            <button id="Button2" onclick="num301()">Change this button colour of my own</button>
+            <button onclick="num302()">Change the background colour of my own</button>
+        </div>
+
+        <div class="bg-light text-black p-3 my-3 border border-dark">
+            <h2>Quick Colour Change</h2>
+            <p>
+                Just click the below colour buttons to quickly change your background colour.
+            </p>
+            <button id="ButtonRed" onclick="red()" style="background-color: red;">Red</button>
+            <button id="ButtonBlue" onclick="blue()" style="background-color: blue;">Blue</button>
+            <button id="ButtonYellow" onclick="yellow()" style="background-color: yellow;">Yellow</button>
+            <button id="ButtonGreen" onclick="green()" style="background-color: green;">Green</button>
+            <button id="ButtonOrange" onclick="orange()" style="background-color: orange;">Orange</button>
+            <button id="ButtonPink" onclick="pink()" style="background-color: pink;">Pink</button>
+            <button id="ButtonPurple" onclick="purple()" style="background-color: purple;">Purple</button>
+        </div>
+
+
+
+    </div>  
+    
+        <div class="container-fluid bg-dark text-white p-3 my-3">
+            <h3>Thank-You</h3>
+        </div>
+
+
+        <script>
+            
+            var a, b, c, rgb;
+
+            function changeColour() {
+            var a = Math.floor(Math.random()*256);
+            var b = Math.floor(Math.random()*256);
+            var c = Math.floor(Math.random()*256);
+            var Button1 = document.getElementById("Button1")
+
+            var rgb = "rgb("+a+","+b+","+c+")";
+            Button1.style.backgroundColor = rgb;
+            }
+
+            function ChangeColour() {
+            var a = Math.floor(Math.random()*256);
+            var b = Math.floor(Math.random()*256);
+            var c = Math.floor(Math.random()*256);
+
+            var rgb = "rgb("+a+","+b+","+c+")";
+            document.body.style.backgroundColor = rgb;
+            }
+
+            function num302() {
+                var a = prompt("For Making your own mood colour, just give the first number of your RGB colour");
+                var b = prompt("For Making your own mood colour, just give the second number of your RGB colour");
+                var c = prompt("For Making your own mood colour, just give the third number of your RGB colour");
+
+                var rgb = "rgb("+a+","+b+","+c+")";
+                document.body.style.backgroundColor = rgb;
+            }
+
+             function num301() {
+                var a = prompt("For Making your own mood colour, just give the first number of your RGB colour");
+                var b = prompt("For Making your own mood colour, just give the second number of your RGB colour");
+                var c = prompt("For Making your own mood colour, just give the third number of your RGB colour");
+                var Button2 = document.getElementById("Button2")
+  
+                var rgb = "rgb("+a+","+b+","+c+")";
+                Button2.style.backgroundColor = rgb;
+             }    
+
+             function red() {
+                document.body.style.backgroundColor = "red";
+             }
+             function blue() {
+                document.body.style.backgroundColor = "blue";
+             }
+             function green() {
+                document.body.style.backgroundColor = "green";
+             }
+             function purple() {
+                document.body.style.backgroundColor = "purple";
+             }
+             function yellow() {
+                document.body.style.backgroundColor = "yellow";
+             }
+             function orange() {
+                document.body.style.backgroundColor = "orange";
+             }
+             function pink() {
+                document.body.style.backgroundColor = "pink";
+             }
+
+        </script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
