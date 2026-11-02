@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Finding Perimeter of Different Shapes</title>
+    <title>Measuring Space</title>
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -20,14 +20,18 @@
       .details {
         background-color: aquamarine;
       }
+      #MathNav:hover {
+        text-decoration: none !important;
+        color: inherit;
+      }
     </style>
   </head>
-  <body>
+  <body id="Measuring-Space">
     <nav
       id="MathNav"
       class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top"
     >
-      <span class="navbar-brand">Measuring Space</span>
+      <a href="#Measuring-Space" class="navbar-brand">Measuring Space</a>
       <ul class="navbar-nav">
         <li class="nav-item">
           <a href="#Perimeter" class="nav-link">Perimeter</a>
@@ -39,76 +43,73 @@
       </ul>
     </nav>
 
-    <div
-      class="bg-danger text-white p-3 my-3 border border-dark"
-      id="Perimeter"
-      style="height: 400px"
-    >
-      <hr />
-      <h2>Perimeter</h2>
-      <hr />
-      <p>
-        Perimeter is the total-length of boundary of a 2D shape. Choose the
-        shape you want to find the Perimeter.
-      </p>
-
-      <button onclick="pRectangle()" class="btn btn-success">Rectangle</button
-      ><br /><br />
-      <button onclick="pSquare()" class="btn btn-primary">Square</button
-      ><br /><br />
-      <button onclick="pTriangle()" class="btn btn-info">Triangle</button
-      ><br /><br />
-      <button onclick="pCircle()" class="btn btn-warning">Circle</button
-      ><br /><br />
-
-      <hr />
+    <div class="container">
+      <div
+        class="bg-danger text-white p-3 my-3 border border-dark"
+        id="Perimeter"
+      >
+        <hr />
+        <h2>Perimeter</h2>
+        <hr />
+        <p>
+          Perimeter is the total-length of boundary of a 2D shape. Choose the
+          shape you want to find the Perimeter.
+        </p>
+        <button onclick="pRectangle()" class="btn btn-success">Rectangle</button
+        ><br /><br />
+        <button onclick="pSquare()" class="btn btn-primary">Square</button
+        ><br /><br />
+        <button onclick="pTriangle()" class="btn btn-info">Triangle</button
+        ><br /><br />
+        <button onclick="pCircle()" class="btn btn-warning">Circle</button
+        ><br /><br />
+        <hr />
+      </div>
     </div>
 
-    <div
-      class="bg-success text-white p-3 my-3 border border-dark"
-      id="Area"
-      style="height: 400px"
-    >
-      <hr />
-      <h2>Area</h2>
-      <hr />
-      <p>
-        Area is the total space occupied by the 2D shape on a plane surface.
-        Choose the shape you want to find the Area.
-      </p>
+    <div class="container">
+      <div class="bg-success text-white p-3 my-3 border border-dark" id="Area">
+        <hr />
+        <h2>Area</h2>
+        <hr />
+        <p>
+          Area is the total space occupied by the 2D shape on a plane surface.
+          Choose the shape you want to find the Area.
+        </p>
+        <button onclick="aRectangle()" class="btn btn-info">Rectangle</button
+        ><br /><br />
+        <button onclick="aSquare()" class="btn btn-danger">Square</button
+        ><br /><br />
+        <button onclick="aTriangle()" class="btn btn-warning">Triangle</button
+        ><br /><br />
+        <button onclick="aCircle()" class="btn btn-primary">Circle</button
+        ><br /><br />
 
-      <button onclick="aRectangle()" class="btn btn-info">Rectangle</button
-      ><br /><br />
-      <button onclick="aSquare()" class="btn btn-danger">Square</button
-      ><br /><br />
-      <button onclick="aTriangle()" class="btn btn-warning">Triangle</button
-      ><br /><br />
-      <button onclick="aCircle()" class="btn btn-primary">Circle</button
-      ><br /><br />
-
-      <hr />
+        <hr />
+      </div>
     </div>
 
-    <div
-      class="bg-warning text-white p-3 my-3 border border-dark"
-      id="Your-Details"
-      style="height: 400px"
-    >
-      <hr />
-      <h2>User-Details</h2>
-      <hr />
-      <p>Your-Details will be visible here</p>
+    <div class="container">
+      <div
+        class="bg-warning text-white p-3 my-3 border border-dark"
+        id="Your-Details"
+      >
+        <hr />
+        <h2>User-Details</h2>
+        <hr />
+        <p>Your-Details will be visible here</p>
 
-      <p id="name"></p>
-      <br />
-      <p id="age"></p>
-      <br />
-      <p id="country"></p>
-      <br />
-      <button onclick="changingDetails()" class="btn btn-danger">
-        Change My Details
-      </button>
-      <hr />
+        <p id="name"></p>
+        <br />
+        <p id="age"></p>
+        <br />
+        <p id="country"></p>
+        <br />
+        <button onclick="changingDetails()" class="btn btn-danger">
+          Change My Details
+        </button>
+        <hr />
+      </div>
     </div>
 
     <div class="container-fluid bg-dark text-white p-3 my-3">
