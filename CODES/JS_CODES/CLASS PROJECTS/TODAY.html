@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today-is...</title>
+
+
+    <style>
+      * {
+        margin: 0;
+
+        padding: 0;
+
+        box-sizing: border-box;
+
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      body {
+        height: 100vh;
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: center;
+
+        background: linear-gradient(135deg, #141e30, #243b55);
+      }
+
+      #MyDisplay {
+        padding: 30px 60px;
+
+        font-size: 4rem;
+
+        font-weight: bold;
+
+        color: #fff;
+
+        letter-spacing: 5px;
+
+        background: rgba(255, 255, 255, 0.1);
+
+        border-radius: 20px;
+
+        backdrop-filter: blur(10px);
+
+        -webkit-backdrop-filter: blur(10px);
+
+        border: 1px solid rgba(255, 255, 255, 0.2);
+
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.3),
+          0 0 20px rgba(0, 255, 255, 0.3);
+
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+      }
+
+      @media (max-width: 768px) {
+        #MyDisplay {
+          font-size: 2rem;
+
+          padding: 20px 30px;
+        }
+      }
+    </style>
+
+</head>
+<body>
+    
+    <div onload="today()" id="MyDisplay"></div>
+    
+    <script>
+        function today() {
+
+            var today = new today();
+            var date =  new Date();
+            
+
+
+
+            document.getElementById("MyDisplay").innerText= date;
+        }
+    </script>
+
+</body>
+</html>
