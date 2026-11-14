@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timer</title>
-
+    <!--Style of the Timer App-->
     <style>
       * {
         margin: 0;
@@ -43,6 +43,8 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 
         min-width: 350px;
+
+        align-items: center;
       }
 
       h1 {
@@ -86,6 +88,22 @@
 
         color: white;
       }
+
+      #button-stop {
+        background: #ef4444;
+
+        color: white;
+      }
+
+      #button-reset {
+        background: #f59e0b;
+
+        color: white;
+      }
+
+      #button-set {
+        background: olive;
+      }
       
       button:hover {
         transform: translateY(-3px);
@@ -101,9 +119,54 @@
 </head>
 <body>
     
+    <!--Setting the Needed Items-->
     <div class="wrapper">
         <h1>Timer</h1>
+        <button onclick="setTimer()" id="button-set">Set Timer</button>
+        <p><span id="minutes">0</span>
+            :
+            <span id="seconds">0</span>
+        </p>
+
+        <button onclick="startTimer()" id="button-start">Start Timer</button>
+        <button onclick="stopTimer()" id="button-stop">Pause Timer</button>
+        <button onclick="resetTimer()" id="button-reset">Reset Timer</button>
     </div>
+  
+    <!--Giving Functions to the Application-->
+    <script>
+            var minutes = 0;
+            var seconds = 0;
+            var appendMinutes = document.getElementById("minutes");
+            var appendSeconds = document.getElementById("seconds");
+            var buttonStart = document.getElementById("button-start");
+            var buttonStop = document.getElementById("button-stop");
+            var buttonReset = document.getElementById("button-reset");
+            var Interval;
+  
+            //Setting Timer according to the user requirements and displaying them in order
+            function setTimer() {
+            var minutes = prompt("Enter the Number of Minutes for your Timer");
+            if (minutes <= 9) {
+                minutes = "0" + minutes
+            };
+            appendMinutes.innerHTML = minutes;
+
+
+
+            var seconds= prompt("Enter the Number of seconds for your Timer");
+            if (seconds <= 9) {
+                seconds = "0" + seconds
+            };
+            appendSeconds.innerHTML = seconds;
+            };
+
+            //Starting Function of Timer
+            function startTimer() {
+                clearInterval(Interval)
+                Interval = setInterval(start, 5);
+            }
+    </script>
 
 </body>
 </html>
