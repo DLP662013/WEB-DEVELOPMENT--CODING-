@@ -152,13 +152,19 @@
                     appendMilliseconds.innerHTML = milliseconds;
                 }
                 if (milliseconds > 99) {
-                    seconds;
+                    seconds++;
                     appendSeconds.innerHTML = seconds;
                     milliseconds = 0;
                     appendMilliseconds.innerHTML = "00";
                 }
-                if (seconds > 9) {
+                if (seconds >= 9) {
                     appendSeconds.innerHTML = seconds;
+                }
+                if (seconds <= 9) {
+                    appendSeconds.innerHTML = "0" + seconds;
+                }
+                if (seconds === 0) {
+                    appendSeconds.innerHTML = "0" + seconds;
                 }
             }
          };
