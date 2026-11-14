@@ -1,3 +1,6 @@
+
+<!--Starting of this Project-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,19 +73,88 @@
 <body>
     
     <div onload="today()" id="MyDisplay"></div>
+    <div id="demo"></div>
     
     <script>
         function today() {
-
-            var today = new today();
-            var date =  new Date();
+            var target =  new Date();
+            var day = target.getDay();
+            var month = target.getMonth();
+            var date = target.getDate();
+            var year = target.getFullYear();
             
+            //Changing Day Numbers into Words
+            if (day == 0) {
+              var day = "Sunday";
+            }
+            if (day == 1) {
+              var day = "Monday";
+            }
+            if (day == 2) {
+              var day = "Tuesday";
+            }
+            if (day == 3) {
+              var day = "Wednesday";
+            }
+            if (day == 4) {
+              var day = "Thusday";
+            }
+            if (day == 5) {
+              var day = "Friday";
+            }
+            if (day == 6) {
+              var day = "Saturday";
+            }
+     
+            //Changing Month Numbers into Name of Month
+            if (month == 0) {
+              var month = "January";
+            }
+            if (month == 1) {
+              var month = "February";
+            }
+            if (month == 2) {
+              var month = "March";
+            }
+            if (month == 3) {
+              var month = "April";
+            }
+            if (month == 4) {
+              var month = "May";
+            }
+            if (month == 5) {
+              var month = "June";
+            }
+            if (month == 6) {
+              var month = "July";
+            }
+            if (month == 7) {
+              var month = "August";
+            }
+            if (month == 8) {
+              var month = "September";
+            }
+            if (month == 9) {
+              var month = "October";
+            }
+            if (month == 10) {
+              var month = "November";
+            }
+            if(month == 11) {
+              var month = "December";
+            }
 
-
-
-            document.getElementById("MyDisplay").innerText= date;
-        }
+            //Displaying The current day, month, date, year; in order
+            var answer = day + "," + " " + month + " " + date + " " + year;
+            document.getElementById("MyDisplay").innerText = answer;
+          }
+        today()
+        
     </script>
+          
 
+                    <!--Successfully-Completed-->
+
+                       
 </body>
 </html>
