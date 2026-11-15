@@ -123,9 +123,9 @@
     <div class="wrapper">
         <h1>Timer</h1>
         <button onclick="setTimer()" id="button-set">Set Timer</button>
-        <p><span id="minutes">0</span>
+        <p><span id="minutes">00</span>
             :
-            <span id="seconds">0</span>
+            <span id="seconds">00</span>
         </p>
 
         <button onclick="startTimer()" id="button-start">Start Timer</button>
@@ -135,8 +135,10 @@
   
     <!--Giving Functions to the Application-->
     <script>
-            var minutes = 0;
-            var seconds = 0;
+
+          //Setting Variables
+            var minutes;
+            var seconds;
             var appendMinutes = document.getElementById("minutes");
             var appendSeconds = document.getElementById("seconds");
             var buttonStart = document.getElementById("button-start");
@@ -144,28 +146,37 @@
             var buttonReset = document.getElementById("button-reset");
             var Interval;
   
-            //Setting Timer according to the user requirements and displaying them in order
+            //Setting Minutes and Seconds of the Timer according to the user requirements and displaying them in order
             function setTimer() {
+            //Setting Minutes of the Timer according to the User's Desire
             var minutes = prompt("Enter the Number of Minutes for your Timer");
             if (minutes <= 9) {
                 minutes = "0" + minutes
             };
             appendMinutes.innerHTML = minutes;
 
-
-
-            var seconds= prompt("Enter the Number of seconds for your Timer");
+            //Setting Seconds of the Timer according to the User's Desire
+            var seconds= prompt("Enter the Number of Seconds for your Timer");
             if (seconds <= 9) {
                 seconds = "0" + seconds
             };
             appendSeconds.innerHTML = seconds;
             };
 
+            //Starting Timer and Showing it as Decreasing
+            function Timer() {
+              if (minutes === 0) {
+              alert("yes it is")
+              }
+            }
+
             //Starting Function of Timer
             function startTimer() {
-                clearInterval(Interval)
-                Interval = setInterval(start, 5);
+                if (appendMinutes === 0) {
+                alert("yes it is")
+              }
             }
+
     </script>
 
 </body>
