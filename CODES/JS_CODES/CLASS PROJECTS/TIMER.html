@@ -1,11 +1,10 @@
-
 <!--Starting the Project-->
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Timer</title>
     <!--Style of the Timer App-->
     <style>
@@ -104,7 +103,7 @@
       #button-set {
         background: olive;
       }
-      
+
       button:hover {
         transform: translateY(-3px);
 
@@ -115,69 +114,63 @@
         transform: scale(0.95);
       }
     </style>
-
-</head>
-<body>
-    
+  </head>
+  <body>
     <!--Setting the Needed Items-->
     <div class="wrapper">
-        <h1>Timer</h1>
-        <button onclick="setTimer()" id="button-set">Set Timer</button>
-        <p><span id="minutes">00</span>
-            :
-            <span id="seconds">00</span>
-        </p>
+      <h1>Timer</h1>
+      <button onclick="setTimer()" id="button-set">Set Timer</button>
+      <p>
+        <span id="minutes">00</span>
+        :
+        <span id="seconds">00</span>
+      </p>
 
-        <button onclick="startTimer()" id="button-start">Start Timer</button>
-        <button onclick="stopTimer()" id="button-stop">Pause Timer</button>
-        <button onclick="resetTimer()" id="button-reset">Reset Timer</button>
+      <button onclick="startTimer()" id="button-start">Start Timer</button>
+      <button onclick="stopTimer()" id="button-stop">Pause Timer</button>
+      <button onclick="resetTimer()" id="button-reset">Reset Timer</button>
     </div>
-  
+
     <!--Giving Functions to the Application-->
     <script>
+      //Setting Variables
+      var minutes = 0;
+      var seconds = 0;
+      var appendMinutes = document.getElementById("minutes");
+      var appendSeconds = document.getElementById("seconds");
+      var buttonStart = document.getElementById("button-start");
+      var buttonStop = document.getElementById("button-stop");
+      var buttonReset = document.getElementById("button-reset");
+      var Interval;
 
-          //Setting Variables
-            var minutes;
-            var seconds;
-            var appendMinutes = document.getElementById("minutes");
-            var appendSeconds = document.getElementById("seconds");
-            var buttonStart = document.getElementById("button-start");
-            var buttonStop = document.getElementById("button-stop");
-            var buttonReset = document.getElementById("button-reset");
-            var Interval;
-  
-            //Setting Minutes and Seconds of the Timer according to the user requirements and displaying them in order
-            function setTimer() {
-            //Setting Minutes of the Timer according to the User's Desire
-            var minutes = prompt("Enter the Number of Minutes for your Timer");
-            if (minutes <= 9) {
-                minutes = "0" + minutes
-            };
-            appendMinutes.innerHTML = minutes;
+      //----------------------------------------------------------------
+      // SETTING THE TIMER -> TIMER SETS ACCORDING TO THE USER'S DESIRE |
+      //----------------------------------------------------------------
+      function setTimer() {
+        var minutes = prompt("Enter the Number of Minutes of your Timer");
+        var seconds = prompt("Enter the Number of Seconds of your Timer");
 
-            //Setting Seconds of the Timer according to the User's Desire
-            var seconds= prompt("Enter the Number of Seconds for your Timer");
-            if (seconds <= 9) {
-                seconds = "0" + seconds
-            };
-            appendSeconds.innerHTML = seconds;
-            };
+        //Making sure that user typed in the range of numbers
+        if (minutes >= 0 && seconds >= 0) {
+          // Adding Zero to display timer when they are
+          // if minutes is single digit
+          if (minutes <= 9) {
+            var minutes = "0" + minutes;
+          } else {
+            var minutes = minutes;
+          }
 
-            //Starting Timer and Showing it as Decreasing
-            function Timer() {
-              if (minutes === 0) {
-              alert("yes it is")
-              }
-            }
-
-            //Starting Function of Timer
-            function startTimer() {
-                if (appendMinutes === 0) {
-                alert("yes it is")
-              }
-            }
-
+          // if seconds is single digit
+          if (seconds <= 9) {
+            var seconds = "0" + seconds;
+          } else {
+            var seconds = seconds;
+          }
+          appendMinutes.innerHTML = minutes;
+          appendSeconds.innerHTML = seconds;
+        }
+done      }
+      //----------------------------------------< Setting Timer Function code Done >-------------------------------------------------------------
     </script>
-
-</body>
+  </body>
 </html>
