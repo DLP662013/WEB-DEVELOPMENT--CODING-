@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stop Changing Numbers</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: #f8fafc;
+    }
+
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 36px 28px;
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+      color: #38bdf8;
+    }
+
+    p.subtitle {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      margin-bottom: 24px;
+    }
+
+    .number-box {
+      font-size: 4rem;
+      font-weight: bold;
+      background: #0f172a;
+      border: 2px solid #38bdf8;
+      border-radius: 12px;
+      padding: 20px 0;
+      margin-bottom: 20px;
+      color: #f8fafc;
+      letter-spacing: 2px;
+    }
+
+    .status {
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      color: #cbd5e1;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      background: #38bdf8;
+      color: #0f172a;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    button:hover {
+      background: #7dd3fc;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Rolling Dice App</h1>
+    <p class="subtitle">Even click = Start | Odd click = Stop</p>
+
+    <div class="number-box" id="numberDisplay">0</div>
+
+    <div class="status" id="statusText">Clicks: 0 (Stopped)</div>
+
+    <button id="toggleBtn" onclick="handleClick()">Click Me</button>
+  </div>
+
+  <script>
+    let clickCount = 0;
+    let timer = null;
+
+    const numberDisplay = document.getElementById("numberDisplay");
+    const statusText = document.getElementById("statusText");
+
+    function generateRandomNumber() {
+      // Generates a random number from 1 to 6 (change 6 to 100 if you want 1-100)
+      const randomNum = Math.floor(Math.random() * 6) + 1;
+      numberDisplay.textContent = randomNum;
+    }
+
+    function handleClick() {
+      clickCount++;
+
+      if (clickCount % 2 === 0) {
+        // Even-numbered click -> Start randomizing
+        clearInterval(timer);
+        timer = setInterval(generateRandomNumber, 100);
+        statusText.textContent = `Clicks: ${clickCount} (Even - Running)`;
+      } else {
+        // Odd-numbered click -> Stop randomizing
+        clearInterval(timer);
+        timer = null;
+        statusText.textContent = `Clicks: ${clickCount} (Odd - Stopped)`;
+      }
+    }
+  </script>
+
+</body>
+</html>
