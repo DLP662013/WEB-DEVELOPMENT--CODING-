@@ -142,7 +142,7 @@
       var buttonStop = document.getElementById("button-stop");
       var buttonReset = document.getElementById("button-reset");
       var Interval;
-
+      
       //----------------------------------------------------------------
       // SETTING THE TIMER -> TIMER SETS ACCORDING TO THE USER'S DESIRE |
       //----------------------------------------------------------------
@@ -150,27 +150,49 @@
         var minutes = prompt("Enter the Number of Minutes of your Timer");
         var seconds = prompt("Enter the Number of Seconds of your Timer");
 
-        //Making sure that user typed in the range of numbers
-        if (minutes >= 0 && seconds >= 0) {
-          // Adding Zero to display timer when they are
-          // if minutes is single digit
+        if (minutes !== null && minutes.trim() !== "" && !Number.isNaN(Number(minutes)) && Number(minutes) >= 0 && seconds !== null && seconds.trim() !== "" && !Number.isNaN(Number(seconds)) && Number(seconds) >= 0 && !(Number(minutes) === 0 && Number(seconds) === 0)) {
+          //Making Minutes and seconds into 2-digit if they are 1-digit
           if (minutes <= 9) {
             var minutes = "0" + minutes;
           } else {
-            var minutes = minutes;
-          }
-
-          // if seconds is single digit
-          if (seconds <= 9) {
-            var seconds = "0" + seconds;
-          } else {
-            var seconds = seconds;
+              var minutes = minutes;
           }
           appendMinutes.innerHTML = minutes;
+          if (seconds <= 9) {
+            var seconds = "0" + seconds; 
+          } else {
+              var seconds = seconds
+          }
           appendSeconds.innerHTML = seconds;
+          alert("Your Timer has set according to your minutes and seconds, so now you can start your Timer");
+        } //If numbers are invalid
+        else {
+          alert("You Number of Minutes and Seconds are invalid Numbers for your Timer \n\n So please Enter The Valid Numbers of Minutes and Seconds of your Timer");
+          setTimer();
+          return;
+        };
+      }
+
+      //-----------------------------------------------< Setting Timer Function code Done >-------------------------------------------------------------
+
+      //--------------------------------------------------------------------------------
+      //              STARTING THE TIMER -> STARTTIMER FUNCTION STARTS HERE             |
+      //--------------------------------------------------------------------------------
+
+      function startTimer() {
+        //Minutes = 0
+        if (minutes == 0 && seconds >= 0) {
+          alert("working");
+          return;
+          var seconds = Number(seconds) - 1;
+          appendSeconds.innerHTML = seconds;
+          setTimeout(startTimer(), 999);
         }
-done      }
-      //----------------------------------------< Setting Timer Function code Done >-------------------------------------------------------------
+        else {
+        alert("You haven't set your timer yet, so to start the timer, first you have to set the timer");
+       }
+      }
+
     </script>
   </body>
 </html>

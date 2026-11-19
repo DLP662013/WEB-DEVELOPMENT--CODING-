@@ -1,340 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Codingal Dashboard | All-in-One Protected App</title>
-    
-    <!-- SweetAlert2 CDN for centered popups -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown Timer</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #121212;
+      color: #ffffff;
+    }
 
-        body {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            overflow: hidden;
-            background-color: #f8fafc;
-            color: #1f2937;
-        }
+    .wrapper {
+      background: #1e1e1e;
+      padding: 36px 44px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      width: 360px;
+    }
 
-        /* Navbar */
-        .navbar {
-            height: 65px;
-            background-color: #ffffff;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 30px;
-            z-index: 10;
-        }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+      color: #f0f0f0;
+    }
 
-        .logo {
-            font-size: 22px;
-            font-weight: 800;
-            color: #111827;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+    .timer-display {
+      font-size: 3.5rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      background: #141414;
+      padding: 18px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      color: #00e5ff;
+    }
 
-        .logo-icon {
-            background-color: #ff5a1f;
-            color: white;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 16px;
-        }
+    .status {
+      min-height: 22px;
+      font-size: 0.95rem;
+      color: #bbbbbb;
+      margin-bottom: 24px;
+    }
 
-        .nav-right {
-            display: flex;
-            gap: 10px;
-        }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
 
-        /* Buttons */
-        button {
-            cursor: pointer;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-        }
+    button {
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.1s ease, opacity 0.2s ease;
+    }
 
-        .btn-primary {
-            background-color: #ff5a1f;
-            color: white;
-            border: none;
-            padding: 9px 18px;
-        }
+    button:hover {
+      opacity: 0.9;
+    }
 
-        .btn-primary:hover {
-            background-color: #e04810;
-        }
+    button:active {
+      transform: scale(0.97);
+    }
 
-        .btn-outline {
-            background-color: transparent;
-            color: #ff5a1f;
-            border: 2px solid #ff5a1f;
-            padding: 7px 16px;
-        }
+    #button-set {
+      background: #ffab00;
+      color: #121212;
+    }
 
-        .btn-outline:hover {
-            background-color: #fff3ee;
-        }
+    #button-start {
+      background: #00e676;
+      color: #121212;
+    }
 
-        /* Main Layout */
-        .main-layout {
-            display: flex;
-            flex: 1;
-            height: calc(100vh - 65px);
-        }
+    #button-stop {
+      background: #ff5252;
+      color: #ffffff;
+    }
 
-        /* Sidebar / Aside */
-        .sidebar {
-            width: 260px;
-            background-color: #0f172a;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            padding: 20px 0;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.05);
-        }
-
-        .sidebar a {
-            color: #94a3b8;
-            text-decoration: none;
-            padding: 14px 25px;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .sidebar a:hover, .sidebar a.active {
-            background-color: #1e293b;
-            color: #ff5a1f;
-            border-left: 4px solid #ff5a1f;
-        }
-
-        /* Content Area */
-        .content-area {
-            flex: 1;
-            padding: 40px;
-            overflow-y: auto;
-            background-color: #f9fafb;
-        }
-
-        .content-area h1 {
-            color: #111827;
-            margin-bottom: 12px;
-            font-size: 28px;
-        }
-
-        .content-area p {
-            color: #4b5563;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-
-        /* Custom Centered Modal Overlay */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-        }
-
-        .modal-box {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            width: 380px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .modal-box h3 {
-            margin-bottom: 10px;
-            color: #111827;
-        }
-
-        .modal-box p {
-            color: #4b5563;
-            margin-bottom: 20px;
-        }
-    </style>
+    #button-reset {
+      background: #448aff;
+      color: #ffffff;
+    }
+  </style>
 </head>
 <body>
+  <div class="wrapper">
+    <h1>Countdown Timer</h1>
 
-    <!-- 1. Fixed Navigation Bar -->
-    <header class="navbar">
-        <div class="logo">
-            <span class="logo-icon">&lt;/&gt;</span> Codingal Portal
-        </div>
-        <div class="nav-right">
-            <button class="btn-outline" id="loginBtn">Login</button>
-            <button class="btn-primary" id="bookClassBtn">Book Free Class</button>
-        </div>
-    </header>
-
-    <!-- Main Dashboard Layout -->
-    <div class="main-layout">
-        
-        <!-- 2. Fixed Aside / Sidebar -->
-        <aside class="sidebar">
-            <a href="#" class="nav-link active" data-page="home">🏠 Home Dashboard</a>
-            <a href="#" class="nav-link" data-page="courses">📚 Courses</a>
-            <a href="#" class="nav-link" data-page="students">👨‍🎓 Students</a>
-            <a href="#" class="nav-link" data-page="settings">⚙️ Settings</a>
-        </aside>
-
-        <!-- 3. Dynamic Content Area -->
-        <main id="contentArea" class="content-area">
-            <h1>Welcome to Home Dashboard</h1>
-            <p>Your navigation bar and sidebar remain completely fixed, while this content area dynamically swaps out views!</p>
-        </main>
-
+    <div class="timer-display">
+      <span id="minutes">00</span>:<span id="seconds">00</span>
     </div>
 
-    <!-- Custom Backup Modal (Centered Alert) -->
-    <div id="customAlertModal" class="modal-overlay">
-        <div class="modal-box">
-            <h3>Codingal Notice</h3>
-            <p id="modalMessage">This is a centered custom alert!</p>
-            <button id="modalCloseBtn" class="btn-primary">OK</button>
-        </div>
+    <p id="status-text" class="status">Click "Set Timer" to begin.</p>
+
+    <div class="buttons">
+      <button id="button-set" onclick="setTimer()">Set Timer</button>
+      <button id="button-start" onclick="startTimer()">Start Timer</button>
+      <button id="button-stop" onclick="stopTimer()">Pause Timer</button>
+      <button id="button-reset" onclick="resetTimer()">Reset Timer</button>
     </div>
+  </div>
 
-    <script>
-        // ==========================================
-        // 1. SECURITY: Block Right-Click & Inspect
-        // ==========================================
-        document.addEventListener('contextmenu', function (e) {
-            e.preventDefault();
-            showCustomAlert("Right-click context menu is restricted.");
-        });
+  <script>
+    var totalSeconds = 0;
+    var savedTotalSeconds = 0;
+    var UsercanStart = false;
+    var isSettingTimer = false;
+    var interval = null;
 
-        document.addEventListener('keydown', function (e) {
-            if (e.key === 'F12') {
-                e.preventDefault();
-                showCustomAlert("Developer tools (F12) are restricted.");
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) {
-                e.preventDefault();
-                showCustomAlert("Developer inspection shortcuts are restricted.");
-                return false;
-            }
-            if (e.ctrlKey && e.key === 'U') {
-                e.preventDefault();
-                showCustomAlert("View Source is restricted.");
-                return false;
-            }
-        });
+    var appendMinutes = document.getElementById("minutes");
+    var appendSeconds = document.getElementById("seconds");
+    var statusText = document.getElementById("status-text");
 
+    function formatTwoDigits(num) {
+      return num <= 9 ? "0" + num : String(num);
+    }
 
-        // ==========================================
-        // 2. CUSTOM CENTERED ALERT SYSTEM
-        // ==========================================
-        const modal = document.getElementById("customAlertModal");
-        const modalMessage = document.getElementById("modalMessage");
-        const modalCloseBtn = document.getElementById("modalCloseBtn");
+    function updateDisplay(secs) {
+      var mins = Math.floor(secs / 60);
+      var remSecs = secs % 60;
+      appendMinutes.innerHTML = formatTwoDigits(mins);
+      appendSeconds.innerHTML = formatTwoDigits(remSecs);
+    }
 
-        function showCustomAlert(message) {
-            modalMessage.innerText = message;
-            modal.style.display = "block";
+    function setTimer() {
+      if (isSettingTimer) {
+        alert("Timer is already being set. Please wait a moment.");
+        return;
+      }
+
+      stopTimer();
+
+      var minutesInput = prompt("Enter the Number of Minutes of your Timer");
+      if (minutesInput === null) return;
+
+      var secondsInput = prompt("Enter the Number of Seconds of your Timer");
+      if (secondsInput === null) return;
+
+      var minNum = Number(minutesInput);
+      var secNum = Number(secondsInput);
+
+      var validMinutes =
+        minutesInput.trim() !== "" &&
+        !Number.isNaN(minNum) &&
+        Number.isInteger(minNum) &&
+        minNum >= 0;
+
+      var validSeconds =
+        secondsInput.trim() !== "" &&
+        !Number.isNaN(secNum) &&
+        Number.isInteger(secNum) &&
+        secNum >= 0;
+
+      if (!validMinutes || !validSeconds) {
+        alert("Please enter valid whole numbers (0 or greater) for minutes and seconds.");
+        setTimer();
+        return;
+      }
+
+      if (minNum === 0 && secNum === 0) {
+        alert("Your timer has no time (both minutes and seconds are 0). Please enter a positive time.");
+        setTimer();
+        return;
+      }
+
+      // Short break/loading state before locking in the timer
+      isSettingTimer = true;
+      UsercanStart = false;
+      statusText.innerHTML = "Setting your Timer...";
+      appendMinutes.innerHTML = "--";
+      appendSeconds.innerHTML = "--";
+
+      var combinedSeconds = minNum * 60 + secNum;
+
+      setTimeout(function () {
+        totalSeconds = combinedSeconds;
+        savedTotalSeconds = combinedSeconds;
+        updateDisplay(totalSeconds);
+        UsercanStart = true;
+        isSettingTimer = false;
+        statusText.innerHTML = "Timer is set! Click Start Timer.";
+        alert("Your timer has been set. You can now start your timer!");
+      }, 1500);
+    }
+
+    function startTimer() {
+      if (isSettingTimer) {
+        alert("Please wait until the timer finishes setting.");
+        return;
+      }
+
+      if (UsercanStart !== true || totalSeconds <= 0) {
+        alert("You haven't set your timer yet, so to start the timer first you have to set the timer.");
+        return;
+      }
+
+      if (interval !== null) {
+        return; // already running
+      }
+
+      statusText.innerHTML = "Timer running...";
+
+      interval = setInterval(function () {
+        totalSeconds--;
+        updateDisplay(totalSeconds);
+
+        if (totalSeconds <= 0) {
+          stopTimer();
+          UsercanStart = false;
+          statusText.innerHTML = "Time's up!";
+          alert("Time's up!");
         }
+      }, 1000);
+    }
 
-        modalCloseBtn.addEventListener("click", function() {
-            modal.style.display = "none";
-        });
+    function stopTimer() {
+      if (interval !== null) {
+        clearInterval(interval);
+        interval = null;
+        if (UsercanStart && totalSeconds > 0) {
+          statusText.innerHTML = "Timer paused.";
+        }
+      }
+    }
 
-
-        // ==========================================
-        // 3. APP SHELL: Dynamic Page Swapping
-        // ==========================================
-        const navLinks = document.querySelectorAll('.nav-link');
-        const contentArea = document.getElementById('contentArea');
-
-        const pages = {
-            home: `
-                <h1>Welcome to Home Dashboard</h1>
-                <p>Your navigation bar and sidebar remain completely fixed, while this content area dynamically swaps out views!</p>
-            `,
-            courses: `
-                <h1>Available Courses</h1>
-                <p>Explore your enrolled curriculum modules below:</p>
-                <div style="display: grid; gap: 15px; margin-top: 20px;">
-                    <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <h3>Scratch Programming</h3>
-                        <p>Grades 1-4 • Logic & Animations</p>
-                    </div>
-                    <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                        <h3>Web Development</h3>
-                        <p>Grades 5-8 • HTML, CSS, JavaScript</p>
-                    </div>
-                </div>
-            `,
-            students: `
-                <h1>Student Directory</h1>
-                <p>Active Enrolled Students: <strong>500,000+ Students</strong></p>
-                <p style="margin-top: 10px;">Status: All learning systems operational.</p>
-            `,
-            settings: `
-                <h1>Account Settings</h1>
-                <p>Manage your profile preferences, password, and notification settings here.</p>
-            `
-        };
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-
-                const pageKey = link.getAttribute('data-page');
-
-                if (pages[pageKey]) {
-                    contentArea.innerHTML = pages[pageKey];
-                }
-            });
-        });
-
-
-        // ==========================================
-        // 4. NAVBAR BUTTON ACTIONS (SweetAlert2)
-        // ==========================================
-        document.getElementById('loginBtn').addEventListener('click', () => {
-            Swal.fire({
-                title: 'Student Login',
-                text: 'Redirecting to secure login portal...',
-                icon: 'info',
-                confirmButtonColor: '#ff5a1f'
-            });
-        });
-
-        document.getElementById('bookClassBtn').addEventListener('click', () => {
-            Swal.fire({
-                title: 'Book Free Trial Class',
-                text: 'Your 1-on-1 coding mentorship trial is ready to schedule!',
-                icon: 'success',
-                confirmButtonColor: '#ff5a1f'
-            });
-        });
-    </script>
+    function resetTimer() {
+      stopTimer();
+      totalSeconds = savedTotalSeconds;
+      updateDisplay(totalSeconds);
+      if (totalSeconds > 0) {
+        UsercanStart = true;
+        statusText.innerHTML = "Timer reset. Ready to start.";
+      } else {
+        UsercanStart = false;
+        statusText.innerHTML = "Click \"Set Timer\" to begin.";
+      }
+    }
+  </script>
 </body>
 </html>
