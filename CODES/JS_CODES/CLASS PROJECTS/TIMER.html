@@ -1,198 +1,258 @@
-<!--Starting the Project-->
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Timer</title>
-    <!--Style of the Timer App-->
-    <style>
-      * {
-        margin: 0;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Count-Down Timer</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-        padding: 0;
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #121212;
+      color: #ffffff;
+    }
 
-        box-sizing: border-box;
+    .wrapper {
+      background: #1e1e1e;
+      padding: 36px 44px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      width: 360px;
+    }
 
-        font-family: Arial, Helvetica, sans-serif;
-      }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 18px;
+      color: #f0f0f0;
+    }
 
-      body {
-        height: 100vh;
+    .timer-display {
+      font-size: 3.5rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      background: #141414;
+      padding: 18px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      color: #00e5ff;
+    }
 
-        display: flex;
+    .status {
+      min-height: 22px;
+      font-size: 0.95rem;
+      color: #bbbbbb;
+      margin-bottom: 24px;
+    }
 
-        justify-content: center;
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
 
-        align-items: center;
+    button {
+      padding: 10px 16px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.1s ease, opacity 0.2s ease;
+    }
 
-        background: linear-gradient(135deg, #0f172a, #1e293b);
-      }
+    button:hover {
+      opacity: 0.9;
+    }
 
-      .wrapper {
-        text-align: center;
+    button:active {
+      transform: scale(0.97);
+    }
 
-        background: white;
+    #button-set {
+      background: #ffab00;
+      color: #121212;
+    }
 
-        padding: 40px;
+    #button-start {
+      background: #00e676;
+      color: #121212;
+    }
 
-        border-radius: 20px;
+    #button-stop {
+      background: #ff5252;
+      color: #ffffff;
+    }
 
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    #button-reset {
+      background: #448aff;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Count-Down Timer</h1>
 
-        min-width: 350px;
-
-        align-items: center;
-      }
-
-      h1 {
-        color: #1e293b;
-
-        margin-bottom: 20px;
-
-        font-size: 2.5rem;
-      }
-
-      p {
-        font-size: 4rem;
-
-        font-weight: bold;
-
-        color: #2563eb;
-
-        margin-bottom: 25px;
-      }
-
-      button {
-        border: none;
-
-        padding: 12px 24px;
-
-        margin: 5px;
-
-        font-size: 1rem;
-
-        font-weight: bold;
-
-        border-radius: 10px;
-
-        cursor: pointer;
-
-        transition: all 0.3s ease;
-      }
-
-      #button-start {
-        background: #22c55e;
-
-        color: white;
-      }
-
-      #button-stop {
-        background: #ef4444;
-
-        color: white;
-      }
-
-      #button-reset {
-        background: #f59e0b;
-
-        color: white;
-      }
-
-      #button-set {
-        background: olive;
-      }
-
-      button:hover {
-        transform: translateY(-3px);
-
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      button:active {
-        transform: scale(0.95);
-      }
-    </style>
-  </head>
-  <body>
-    <!--Setting the Needed Items-->
-    <div class="wrapper">
-      <h1>Timer</h1>
-      <button onclick="setTimer()" id="button-set">Set Timer</button>
-      <p>
-        <span id="minutes">00</span>
-        :
-        <span id="seconds">00</span>
-      </p>
-
-      <button onclick="startTimer()" id="button-start">Start Timer</button>
-      <button onclick="stopTimer()" id="button-stop">Pause Timer</button>
-      <button onclick="resetTimer()" id="button-reset">Reset Timer</button>
+    <div class="timer-display">
+      <span id="minutes">00</span>:<span id="seconds">00</span>
     </div>
 
-    <!--Giving Functions to the Application-->
-    <script>
-      //Setting Variables
-      var minutes = 0;
-      var seconds = 0;
-      var appendMinutes = document.getElementById("minutes");
-      var appendSeconds = document.getElementById("seconds");
-      var buttonStart = document.getElementById("button-start");
-      var buttonStop = document.getElementById("button-stop");
-      var buttonReset = document.getElementById("button-reset");
-      var Interval;
-      
-      //----------------------------------------------------------------
-      // SETTING THE TIMER -> TIMER SETS ACCORDING TO THE USER'S DESIRE |
-      //----------------------------------------------------------------
-      function setTimer() {
-        var minutes = prompt("Enter the Number of Minutes of your Timer");
-        var seconds = prompt("Enter the Number of Seconds of your Timer");
+    <p id="status-text" class="status">Click "Set Timer" to begin.</p>
 
-        if (minutes !== null && minutes.trim() !== "" && !Number.isNaN(Number(minutes)) && Number(minutes) >= 0 && seconds !== null && seconds.trim() !== "" && !Number.isNaN(Number(seconds)) && Number(seconds) >= 0 && !(Number(minutes) === 0 && Number(seconds) === 0)) {
-          //Making Minutes and seconds into 2-digit if they are 1-digit
-          if (minutes <= 9) {
-            var minutes = "0" + minutes;
-          } else {
-              var minutes = minutes;
-          }
-          appendMinutes.innerHTML = minutes;
-          if (seconds <= 9) {
-            var seconds = "0" + seconds; 
-          } else {
-              var seconds = seconds
-          }
-          appendSeconds.innerHTML = seconds;
-          alert("Your Timer has set according to your minutes and seconds, so now you can start your Timer");
-        } //If numbers are invalid
-        else {
-          alert("You Number of Minutes and Seconds are invalid Numbers for your Timer \n\n So please Enter The Valid Numbers of Minutes and Seconds of your Timer");
-          setTimer();
-          return;
-        };
+    <div class="buttons">
+      <button id="button-set" onclick="setTimer()">Set Timer</button>
+      <button id="button-start" onclick="startTimer()">Start Timer</button>
+      <button id="button-stop" onclick="stopTimer()">Pause Timer</button>
+      <button id="button-reset" onclick="resetTimer()">Reset Timer</button>
+    </div>
+  </div>
+
+  <script>
+    var totalSeconds = 0;
+    var savedTotalSeconds = 0;
+    var UsercanStart = false;
+    var isSettingTimer = false;
+    var interval = null;
+
+    var appendMinutes = document.getElementById("minutes");
+    var appendSeconds = document.getElementById("seconds");
+    var statusText = document.getElementById("status-text");
+
+    function formatTwoDigits(num) {
+      return num <= 9 ? "0" + num : String(num);
+    }
+
+    function updateDisplay(secs) {
+      var mins = Math.floor(secs / 60);
+      var remSecs = secs % 60;
+      appendMinutes.innerHTML = formatTwoDigits(mins);
+      appendSeconds.innerHTML = formatTwoDigits(remSecs);
+    }
+
+    function setTimer() {
+      if (isSettingTimer) {
+        alert("Timer is already being set. Please wait a moment.");
+        return;
       }
 
-      //-----------------------------------------------< Setting Timer Function code Done >-------------------------------------------------------------
+      stopTimer();
 
-      //--------------------------------------------------------------------------------
-      //              STARTING THE TIMER -> STARTTIMER FUNCTION STARTS HERE             |
-      //--------------------------------------------------------------------------------
+      var minutesInput = prompt("Enter the Number of Minutes of your Timer");
+      if (minutesInput === null) return;
 
-      function startTimer() {
-        //Minutes = 0
-        if (minutes == 0 && seconds >= 0) {
-          alert("working");
-          return;
-          var seconds = Number(seconds) - 1;
-          appendSeconds.innerHTML = seconds;
-          setTimeout(startTimer(), 999);
+      var secondsInput = prompt("Enter the Number of Seconds of your Timer");
+      if (secondsInput === null) return;
+
+      var minNum = Number(minutesInput);
+      var secNum = Number(secondsInput);
+
+      var validMinutes =
+        minutesInput.trim() !== "" &&
+        !Number.isNaN(minNum) &&
+        Number.isInteger(minNum) &&
+        minNum >= 0;
+
+      var validSeconds =
+        secondsInput.trim() !== "" &&
+        !Number.isNaN(secNum) &&
+        Number.isInteger(secNum) &&
+        secNum >= 0;
+
+      if (!validMinutes || !validSeconds) {
+        alert("Please enter valid whole numbers (0 or greater) for minutes and seconds.");
+        setTimer();
+        return;
+      }
+
+      if (minNum === 0 && secNum === 0) {
+        alert("Your timer has no time (both minutes and seconds are 0). Please enter a positive time.");
+        setTimer();
+        return;
+      }
+
+      // Short break/loading state before locking in the timer
+      isSettingTimer = true;
+      UsercanStart = false;
+      statusText.innerHTML = "Setting your Timer...";
+      appendMinutes.innerHTML = "--";
+      appendSeconds.innerHTML = "--";
+
+      var combinedSeconds = minNum * 60 + secNum;
+
+      setTimeout(function () {
+        totalSeconds = combinedSeconds;
+        savedTotalSeconds = combinedSeconds;
+        updateDisplay(totalSeconds);
+        UsercanStart = true;
+        isSettingTimer = false;
+        statusText.innerHTML = "Timer is set! Click Start Timer.";
+        alert("Your timer has been set. You can now start your timer!");
+      }, 1500);
+    }
+
+    function startTimer() {
+      if (isSettingTimer) {
+        alert("Please wait until the timer finishes setting.");
+        return;
+      }
+
+      if (UsercanStart !== true || totalSeconds <= 0) {
+        alert("You haven't set your timer yet, so to start the timer first you have to set the timer.");
+        return;
+      }
+
+      if (interval !== null) {
+        return; // already running
+      }
+
+      statusText.innerHTML = "Timer running...";
+
+      interval = setInterval(function () {
+        totalSeconds--;
+        updateDisplay(totalSeconds);
+
+        if (totalSeconds <= 0) {
+          stopTimer();
+          UsercanStart = false;
+          statusText.innerHTML = "Time's up!";
+          alert("Time's up!");
         }
-        else {
-        alert("You haven't set your timer yet, so to start the timer, first you have to set the timer");
-       }
-      }
+      }, 1000);
+    }
 
-    </script>
-  </body>
+    function stopTimer() {
+      if (interval !== null) {
+        clearInterval(interval);
+        interval = null;
+        if (UsercanStart && totalSeconds > 0) {
+          statusText.innerHTML = "Timer paused.";
+        }
+      }
+    }
+
+    function resetTimer() {
+      stopTimer();
+      totalSeconds = savedTotalSeconds;
+      updateDisplay(totalSeconds);
+      if (totalSeconds > 0) {
+        UsercanStart = true;
+        statusText.innerHTML = "Timer reset. Ready to start.";
+      } else {
+        UsercanStart = false;
+        statusText.innerHTML = "Click \"Set Timer\" to begin.";
+      }
+    }
+  </script>
+</body>
 </html>
