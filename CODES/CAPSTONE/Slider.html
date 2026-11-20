@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+</head>
+<body>
+    <!--Slide Show-->
+    <section>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvqjHmN4HfyUANR4EcfUQI0PFHODW6XW_Xv1ai1fDK1A&s=10" class="mySlides" style="height: 500px;">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj39sOE6Jg_BuG0oHYLj6DBFtXWYPiJUEuWo7faVONKw&s=10" class="mySlides" style="height: 500px;">
+    </section>
+
+    <script>
+        // Automatic Slide Show changes the image every 3 seconds
+
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+
+            myIndex++;
+            if (myIndex > x.length) {
+                myIndex = 1;
+            }
+
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel(), 3000);
+
+        }
+    </script>
+
+</body>
+</html>
