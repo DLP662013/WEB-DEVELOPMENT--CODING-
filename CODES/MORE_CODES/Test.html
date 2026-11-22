@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: sans-serif;
+      color: #1f2937;
+      padding: 30px;
+    }
+
+    #searchInput {
+      width: 300px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    #itemList {
+      list-style: none;
+      padding: 0;
+    }
+
+    #itemList li {
+      padding: 10px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Search Bar Input -->
+  <input type="text" id="searchInput" onkeypress="filterItems()" placeholder="Search items...">
+
+  <!-- 2. List of Items to Search -->
+  <ul id="itemList">
+    <section>Apple</section>
+    <section>Banana</section>
+    <section>Mango</section>
+    <section>Orange</section>
+    <section>Pineapple</section>
+    <section>Watermelon</section>
+  </ul>
+
+  <!-- 3. JavaScript Search Logic -->
+  <script>
+    function filterItems() {
+      // Get what the user typed and convert to lowercase
+      const searchText = document.getElementById("searchInput").value.toLowerCase();
+      
+      // Get all list items
+      const items = document.querySelectorAll("(id of the section) (element name)");
+
+      // Loop through each item and hide/show based on match
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(searchText)) {
+          item.style.display = "";     // Show match
+        } else {
+          item.style.display = "none"; // Hide non-match
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

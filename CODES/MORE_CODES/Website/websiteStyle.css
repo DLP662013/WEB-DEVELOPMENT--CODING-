@@ -1,0 +1,13 @@
+body {
+    background-color: lightgrey;
+    font-family: Arial, sans-serif;
+}
+aside {
+    background-color: white;
+    height: fill;
+    width: 250px;
+}
+.nav-link:hover{
+    color: lightblue;
+    text-decoration: underline;
+}

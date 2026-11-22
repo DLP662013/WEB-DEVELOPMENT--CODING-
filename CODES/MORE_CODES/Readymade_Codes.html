@@ -19,7 +19,7 @@
         </ul>
     </nav>
 
-    <!--For Different Sections but it is full-->
+    <!--For Different Sections but it is full container that is fills the laptop width-->
     <div class="bg-(your wish) text-white p-3 my-3 border border-dark" id="(Name of your link)"></div>
 
 
@@ -98,7 +98,7 @@
 
 
 <!--For Small Containers (Needed BookStrap Links)-->
-  <div class="col-md-4">
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
                     <div class="card-title">(Name of your Section)</div>
@@ -107,3 +107,28 @@
                 </div>
             </div>
         </div>
+
+
+------------------------------------------------------------------------------------------------------------------------------------------For Small Containers
+
+
+<!--For Search Bar-->
+        <script>
+    function filterItems() {
+      // Get what the user typed and convert to lowercase
+      const searchText = document.getElementById("searchInput").value.toLowerCase();
+      
+      // Get all list items
+      const items = document.querySelectorAll("(id of the section) (element name)");
+
+      // Loop through each item and hide/show based on match
+      items.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(searchText)) {
+          item.style.display = "";     // Show match
+        } else {
+          item.style.display = "none"; // Hide non-match
+        }
+      });
+    }
+  </script>
